@@ -96,5 +96,5 @@ function solution(input){
 }
 
 //node level1_js_dartGame.js input
-solution(process.argv[2]);
+// solution(process.argv[2]);
 

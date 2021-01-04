@@ -1,5 +1,5 @@
 //https://programmers.co.kr/learn/courses/30/lessons/17682
-
+// const assert = require('assert').strict;
 //1
 let trial = [];
 //2
@@ -92,9 +92,11 @@ function solution(input){
         result += trial[i];
     }
     console.log("result",result);
-    return result;
+    // return result;
 }
 
 //node level1_js_dartGame.js input
 // solution(process.argv[2]);
+// assert.deepEqual(37, solution("1S2D*3T"));
+
 

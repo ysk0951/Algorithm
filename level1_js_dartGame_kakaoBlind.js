@@ -95,7 +95,7 @@ function solution(input){
     // return result;
 }
 
-//node level1_js_dartGame.js input
+//node level1_js_dartGame_kakaoBlind.js input
 // solution(process.argv[2]);
 // assert.deepEqual(37, solution("1S2D*3T"));
 

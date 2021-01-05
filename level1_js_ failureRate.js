@@ -22,7 +22,7 @@ function solution(N,stages){
         //각각의 숫자
         let each_num = stages[i];
         //모든 단계 성공
-        if(each_num > N){
+        if(each_num == N+1){
             for(let arr in each_stage_failure_2 ){
                 each_stage_failure_2[arr] += 1;
             }
@@ -37,14 +37,19 @@ function solution(N,stages){
                 }
             }
         }
-
     }
     let failer = [];
     let beforSort = [];
     let answer = [];
-    for(let i in each_stage_failure_2){
-        failer[i] = each_stage_failure_1[i]/each_stage_failure_2[i];
-        beforSort[i] = each_stage_failure_1[i]/each_stage_failure_2[i];
+    for(let i=0;i<N;i++){
+        //도달한 사람이 없을때
+        if(each_stage_failure_2[i]==0){
+            failer[i] = 0;
+            beforSort[i] = 0;
+        }else{
+            failer[i] = each_stage_failure_1[i]/each_stage_failure_2[i];
+            beforSort[i] = each_stage_failure_1[i]/each_stage_failure_2[i];
+        }
     }
 
     failer.sort(function(a,b){
@@ -63,11 +68,11 @@ function solution(N,stages){
             }
         }
     }
-    console.log("실패율",failer);
-    console.log("정렬전",beforSort)
-    console.log("순위",answer);
+    // console.log("실패율",failer);
+    // console.log("정렬전",beforSort)
+    // console.log("순위",answer);
     return answer;
 }
 
-solution( 5 , [2, 1, 2, 6, 2, 4, 3, 3]);
-solution( 4	,[4,4,4,4,4]);
+// solution( 5 , [2, 1, 2, 6, 2, 4, 3, 3]);
+// solution( 4	,[4,4,4,4,4]);

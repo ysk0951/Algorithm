@@ -11,11 +11,9 @@ function solution(n) {
             }
         }
         if(count==2){
-            console.log(i,"소수");
             answer++;
         }
     }
-    console.log(answer)
     return answer;
 }
 

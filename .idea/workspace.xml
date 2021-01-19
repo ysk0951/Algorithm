@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92ced236-3d82-4e38-81a2-a87481f66545" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/level1_js_68935.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +33,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\yskim\programmers\level1" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -48,7 +52,10 @@
       <workItem from="1609831284284" duration="1789000" />
       <workItem from="1609894098836" duration="23644000" />
       <workItem from="1609980846884" duration="13845000" />
-      <workItem from="1610066728068" duration="5113000" />
+      <workItem from="1610066728068" duration="12984000" />
+      <workItem from="1610702023122" duration="1211000" />
+      <workItem from="1610951702423" duration="1059000" />
+      <workItem from="1611016814044" duration="18783000" />
     </task>
     <servers />
   </component>

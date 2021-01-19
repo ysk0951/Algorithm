@@ -12,7 +12,8 @@ function solution(n, lost, reserve) {
     for(let i in reserve){
         arr[reserve[i]-1] += 1;
     }
-    let odd = arr.slice(0);
+    let arr2 = arr.slice(0);
+
     //인접 비교
     let index =[];
     for(let i=0;i<n;i++){
@@ -20,32 +21,53 @@ function solution(n, lost, reserve) {
             index.push(i);
         }
     }
-    //짝수를 밀기
+    //index 비교
+    //case 1 좌측에서 나눠준다.
     for(let i=0;i<index.length;i++){
-        if(i%2==0){
-            if(arr[i]==2){
+        if(index[i]+1==index[i+1]){
+            index[i+1] = -1;
+        }
+    }
+    for(let i=0;i<index.length;i++){
+        if(index[i]!=-1){
+            if(arr[i]==2) {
                 arr[i] -= 1;
-                arr[i+1] += 1;
+                arr[i + 1] += 1;
             }else{
                 arr[i] += 1;
-                arr[i+1] -= 1;
+                arr[i + 1] -= 1;
             }
         }
     }
-    //홀수를 밀기
-    for(let i=0;i<index.length;i++){
-        if(i%2!=0){
-            if(odd[i]==2){
-                odd[i] -= 1;
-                odd[i+1] += 1;
+
+    //인접 비교
+    let index2 =[];
+    for(let i=0;i<n;i++){
+        if(arr2[i]+arr2[i+1]==2){
+            index2.push(i);
+        }
+    }
+    console.log(index2)
+    //index 비교
+    //case 2 우측에서 나눠준다.
+    for(let i=index2.length;i>0;i--){
+        if(index2[i]==index2[i-1]+1){
+            index2[i-1] = -1;
+        }
+    }
+    for(let i=0;i<index2.length;i++){
+        if(index2[i]!=-1){
+            if(arr2[i]==2) {
+                arr2[i] -= 1;
+                arr2[i + 1] += 1;
             }else{
-                odd[i] += 1;
-                odd[i+1] -= 1;
+                arr2[i] += 1;
+                arr2[i + 1] -= 1;
             }
         }
     }
-    var oddLen =n- odd.filter(n => n ===0).length;
-    var evenLen = n-arr.filter(n => n ===0).length;
+   var oddLen =n- arr.filter(n => n ===0).length;
+    var evenLen = n-arr2.filter(n => n ===0).length;
     if(oddLen>evenLen) answer = oddLen
     else answer = evenLen
     return answer;

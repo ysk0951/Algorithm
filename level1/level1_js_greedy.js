@@ -12,54 +12,42 @@ function solution(n, lost, reserve) {
     for(let i in reserve){
         arr[reserve[i]-1] += 1;
     }
-    // 최대값을 구하려면 5개단위로 봐야한다.
-    for (let i in arr){
-        if(arr[i]==0){
-            //한쪽만 줄수있는경우에는 한쪽에서 받으면된다.
-            console.log(arr[i-1]==2&&arr[i+1]==2,i,typeof i,arr[i-1],arr[i+1]);
-            if((arr[i-1]==2&&arr[i+1]!=2)||(arr[i-1]!=2&&arr[i+1]==2)){
-                if(arr[i-1]==2){
-                    arr[i]+=1;
-                    arr[i-1]+=1;
-                }else if(arr[i+1]==2){
-                    arr[i]+=1;
-                    arr[i-1]+=1;
-                }
-            //둘다 줄수있는경우에는 한쪽으로 더 나아가서 상황을 고려해야됨.
+    let odd = arr.slice(0);
+    //인접 비교
+    let index =[];
+    for(let i=0;i<n;i++){
+        if(arr[i]+arr[i+1]==2){
+            index.push(i);
+        }
+    }
+    //짝수를 밀기
+    for(let i=0;i<index.length;i++){
+        if(i%2==0){
+            if(arr[i]==2){
+                arr[i] -= 1;
+                arr[i+1] += 1;
             }else{
-                //양쪽다 필요가 없는경우 그냥 앞에서 받기
-                if(arr[i-2]==1&&arr[i+2]==1){
-                    arr[i] +=1;
-                    arr[i-1] -=1;
-                //양쪽다 필요한경우
-                }else if(arr[i-2]==0&&arr[i+2]==0){
-                    arr[i-2] +=1;
-                    arr[i-1] -=1;
-                    arr[i] +=1;
-                    arr[i+1] -=1;
-                }else{
-                    //한쪽만 필요한경우
-                    if(arr[i-2]==1){
-                        arr[i-1]-=1;
-                        arr[i] +=1;
-                        arr[i+1]-=1;
-                        arr[i+2]+=1;
-                    }else if(arr[i+2]==1){
-                        arr[i-2]+=1;
-                        arr[i-1] -=1;
-                        arr[i]+=1;
-                        arr[i+1]-=1;
-                    }
-                }
+                arr[i] += 1;
+                arr[i+1] -= 1;
             }
         }
     }
-    console.log(arr);
-    let count = 0;
-    for (let i in arr){
-        if(arr[i]==0) count +=1;
+    //홀수를 밀기
+    for(let i=0;i<index.length;i++){
+        if(i%2!=0){
+            if(odd[i]==2){
+                odd[i] -= 1;
+                odd[i+1] += 1;
+            }else{
+                odd[i] += 1;
+                odd[i+1] -= 1;
+            }
+        }
     }
-    answer = n-count;
+    var oddLen =n- odd.filter(n => n ===0).length;
+    var evenLen = n-arr.filter(n => n ===0).length;
+    if(oddLen>evenLen) answer = oddLen
+    else answer = evenLen
     return answer;
 }
 solution(5,[2,4],[1,3,5])

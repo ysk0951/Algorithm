@@ -10,9 +10,6 @@ function solution(files) {
         var file = files[i];
         var start;
         var end;
-
-
-
         //HEAD NUMBER TAIL
         for (let j = 0; j < file.length; j++) {
             if (typeof start === 'undefined' && !isNaN(Number(file[j]))) {
@@ -65,7 +62,54 @@ function solution(files) {
     }
     return answer;
     */
+    //-------------------------------2번쨰 풀이--------------------------------//
+    /*var numbers = [];
+    var heads = [];
+    for (let i in files) {
+        var file = files[i];
+        var start = undefined;
+        var number = "";
+        for (let j in file) {
+            if (!isNaN(Number(file[j]))) {
+                if (typeof start === 'undefined') {
+                    start = j;
+                }
+                number += file[j];
+            }
+        }
+        var head = file.substring(0, start);
+        heads.push(head.toUpperCase());
+        numbers.push(Number(number));
+    }
+    // heads.sort();
+    var headsSet = heads.filter((ele,idx)=>{
+        return heads.indexOf(ele)===idx;
+    });
+    headsSet.sort();
+    var answerKey = [];
+    for (let j in heads) {
+        for (let k in headsSet) {
+            if (headsSet[k] == heads[j]) {
+                answerKey.push(k);
+            }
+        }
+    }
+    for(let j in numbers){
+
+    }
+    console.log(answerKey);
+    console.log(heads,headsSet,numbers);*/
+    //-------------------------------3번쨰 풀이--------------------------------//
+    var data = [];
+    for(let i in files){
+        var row = {};
+        var file = files[i];
+        var reg = /ab+c/;
+
+
+    }
 }
 
 // solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"])
-solution(["F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II","F-14 Tomcat"])
+// solution(["F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"]);
+// solution(["img9", "img08", "img000007", "img006"]);

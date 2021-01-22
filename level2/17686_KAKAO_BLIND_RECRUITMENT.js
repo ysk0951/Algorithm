@@ -104,12 +104,38 @@ function solution(files) {
     for(let i in files){
         var row = {};
         var file = files[i];
-        var reg = /ab+c/;
-
-
+        var reg = /[0-9]{1,5}/;
+        var number = reg.exec(file);
+        var others = file.split(number);
+        row["file"] = file;
+        row["idx"] = i;
+        row["head"] = others[0].toUpperCase();
+        row["num"] = number[0];
+        row["tail"] = others[1];
+        data.push(row);
     }
+    data.sort((a, b) => {
+        if (b.head > a.head) {
+            return -1;
+        }else if(b.head==a.head){
+            if (Number(b.num) > Number(a.num)) {
+                return -1;
+            } else if(Number(b.num) == Number(a.num)){
+                if(b.idx > a.idx){
+                    return -1;
+                }
+            }
+        }
+    });
+    var answer = [];
+    for(let i in data){
+        answer.push(data[i].file);
+    }
+    console.log(answer)
+    return answer
+
 }
 
 // solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"])
-// solution(["F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"]);
-// solution(["img9", "img08", "img000007", "img006"]);
+// solution(["F-15 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"]);
+solution(["img9", "img08", "img000007", "img006"]);

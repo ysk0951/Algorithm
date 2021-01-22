@@ -105,6 +105,16 @@ function solution(files) {
         var row = {};
         var file = files[i];
         var reg = /[0-9]{1,5}/;
+        // var p = /^([a-zA-Z\.\- ]+)([0-9]{1,5})(.*)$/g;
+        // var g = p.exec(file);
+        // row = {
+        //     file:file,
+        //     idx:i,
+        //     head:g[1].toUpperCase(),
+        //     num:g[2],
+        //     tail:g[3]
+        // };
+
         var number = reg.exec(file);
         var others = file.split(number);
         row["file"] = file;
@@ -126,6 +136,7 @@ function solution(files) {
                 }
             }
         }
+        return 0;
     });
     var answer = [];
     for(let i in data){
@@ -133,9 +144,4 @@ function solution(files) {
     }
     console.log(answer)
     return answer
-
 }
-
-// solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"])
-// solution(["F-15 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"]);
-solution(["img9", "img08", "img000007", "img006"]);

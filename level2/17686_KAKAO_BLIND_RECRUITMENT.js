@@ -101,7 +101,7 @@ function solution(files) {
     console.log(heads,headsSet,numbers);*/
     //-------------------------------3번쨰 풀이--------------------------------//
     var data = [];
-    for(let i in files){
+    for(var i=0;i<files.length;i++){
         var row = {};
         var file = files[i];
         var reg = /[0-9]{1,5}/;
@@ -127,16 +127,17 @@ function solution(files) {
     data.sort((a, b) => {
         if (b.head > a.head) {
             return -1;
-        }else if(b.head==a.head){
+        }else if(b.head<a.head){
+            return 1;
+        }else {
             if (Number(b.num) > Number(a.num)) {
                 return -1;
-            } else if(Number(b.num) == Number(a.num)){
-                if(b.idx > a.idx){
+            } else if (Number(b.num) == Number(a.num)) {
+                if (b.idx > a.idx) {
                     return -1;
                 }
             }
         }
-        return 0;
     });
     var answer = [];
     for(let i in data){

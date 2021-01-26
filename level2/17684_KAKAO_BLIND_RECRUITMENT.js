@@ -5,25 +5,29 @@ function solution(msg) {
         dictionary[String.fromCharCode(65+i)] = i+1;
     }
     for(var i=0;i<msg.length;i++){
-        var charr = msg[i];
-        for(var j=i+1;j<msg.length;j++){
-            if(msg[j]){
-                charr += msg[j]
-                if (typeof dictionary[charr] === 'undefined') {
-                    dictionary[charr] = Object.keys(dictionary).length + 1;
-                    answer.push(dictionary[charr.slice(0,-1)]);
-                    i = i + charr.slice(0,-1).length-1;
+        var tmp = msg[i];
+        if(i==msg.length-1){
+            answer.push(dictionary[tmp]);
+        }else{
+            for(var j=i+1;j<msg.length;j++){
+                tmp += msg[j];
+                if(!dictionary[tmp]){
+                    dictionary[tmp] = Object.keys(dictionary).length+1
+                    i = i+tmp.slice(0,-1).length-1;
+                    answer.push(dictionary[tmp.slice(0,-1)])
                     break;
+                }else{
+                    if(!msg[j+1]){
+                        answer.push(dictionary[tmp]);
+                        i = i+tmp.length;
+                    };
                 }
             }
-        }
-        if(i==msg.length-1){
-            answer.push(dictionary[msg[i]]);
         }
     }
     return answer;
 }
 
-solution("KAKAO");
+// solution("KAKAO");
 // solution("TOBEORNOTTOBEORTOBEORNOT");
 // solution("ABABABABABABABAB");

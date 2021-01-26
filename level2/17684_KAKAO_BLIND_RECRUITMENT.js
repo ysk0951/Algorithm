@@ -12,12 +12,15 @@ function solution(msg) {
                 if (typeof dictionary[charr] === 'undefined') {
                     dictionary[charr] = Object.keys(dictionary).length + 1;
                     answer.push(dictionary[charr.slice(0,-1)]);
+                    i = i + charr.slice(0,-1).length-1;
                     break;
                 }
             }
         }
+        if(i==msg.length-1){
+            answer.push(dictionary[msg[i]]);
+        }
     }
-    console.log(dictionary,answer);
     return answer;
 }
 

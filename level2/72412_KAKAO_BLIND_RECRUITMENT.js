@@ -105,53 +105,53 @@ function solution(info, query) {
         // console.log(row);
         table[row[0]][row[1]][row[2]][row[3]].push(row[4]);
     }
-
-    //search
+    //openAll
     var searchAll = [];
+    //search
     for(let i=0;i<query.length;i++) {
-        var search = query[i].split(" ").filter(function(o){
-            return o!=="and"
+        var add = [];
+        var search = query[i].split(" ").filter(function (o) {
+            return o !== "and"
         });
-        for(let j=0;j<search.length;j++){
-            if(search[j]=="-"){
-                console.log(search,j)
-                if(j==0){
-                }
+        search.filter(function(o,idx){
+           if(o==='-'){
+               if(idx==0){
+                   search[idx] = ["java","cpp","python"];
+               }else if(idx==1){
+                   search[idx] =  ["backend", 'frontend'];
+               }else if(idx==2){
+                   search[idx] =  ['senior','junior'];
+               }else if(idx==3){
+                   search[idx] = ['pizza', 'chicken'];
+               }
+           }
+        });
+        var lan = search[0]
+        var position = search[1]
+        var year = search[2]
+        var food = search[3]
+        var score = search[4]
+        console.log(search,typeof lan);
+
+
+
+
+
+        if (table[lan] &&
+            table[lan][position] &&
+            table[lan][position][year] &&
+            table[lan][position][year][food]
+        ) {
+            var scores = table[lan][position][year][food];
+            var cnt = 0;
+            for(let j of scores){
+                if(Number(j)>=Number(score)){
+                    cnt ++;
+                };
             }
+            answer.push(cnt)
         }
-        //"-" >> all query
-
-
-
-
-
-
-
-
-
-
-
-
-        // var lan = search[0]
-        // var position = search[1]
-        // var year = search[2]
-        // var food = search[3]
-        // var score = search[4]
-        // if (table[lan] &&
-        //     table[lan][position] &&
-        //     table[lan][position][year] &&
-        //     table[lan][position][year][food]
-        // ) {
-        //     var scores = table[lan][position][year][food];
-        //     var cnt = 0;
-        //     for(let j of scores){
-        //         if(Number(j)>=Number(score)){
-        //             cnt ++;
-        //         };
-        //     }
-        //     answer.push(cnt)
-        // }
     }
-    // console.log(answer)
+    console.log(answer)
 }
 solution(["java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"], ["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]);

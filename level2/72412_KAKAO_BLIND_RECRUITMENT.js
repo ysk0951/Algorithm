@@ -1,25 +1,12 @@
 function solution(info, query) {
     var table = [];
-    var lan = {"cpp":"0","java":"1","python":"2","-":"*"};
-    var work = {"backend":"0","frontend":"1","-":"*"};
-    var years = {"junior":"0","senior":"1","-":"*"};
-    var food = {"chicken":"0","pizza":"1","-":"*"}
     var answer = [];
     //전처리
     for(let i=0;i<info.length;i++){
         var row = info[i].split(' ');
         //Array
         table.push(row);
-        // OBJECT
-        // var index = row[0]+"|"+row[1]+"|"+row[2]+"|"+row[3];
-        // var score = row[4]
-        // if(table[index]){
-        //     table[index] += ","+score;
-        // }else{
-        //     table[index] = score
-        // }
     }
-    
     //search
     for(let i=0;i<query.length;i++){
         var search = query[i].split(" ").filter(function(o){

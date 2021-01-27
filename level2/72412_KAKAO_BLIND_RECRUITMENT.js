@@ -15,16 +15,21 @@ function solution(info, query) {
         var foodE = food[row[3]];
         var score = row[4];
         var code = lanE+workE+yearE+foodE;
-        rowForTable.push();
-        rowForTable.push(score);
-        table[i] = rowForTable;
+        !table[code] ? table[code] = score : table[code] = table[code]+"|"+score
+        // table[code] = score
     }
     for(let i=0;i<query.length;i++){
         var search = query[i].split("and");
         var tmp = search[3].split(" ");
         var score = tmp[2];
         var code = lan[search[0].trim()]+work[search[1].trim()]+years[search[2].trim()]+food[tmp[1]];
-
+        var success = [];
+        if(table[code]) success = table[code].split("|") ;
+        var count = 0;
+        for(let i of success){
+            if(i>=score) count++;
+        }
+        console.log(code,score,success,count);
     }
     console.log(table);
     return answer;

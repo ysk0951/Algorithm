@@ -1,37 +1,43 @@
 function solution(info, query) {
-    var table = {};
-    var lan = {"cpp":"0","java":"1","python":"2","-":"3"};
-    var work = {"backend":"0","frontend":"1","-":"2"};
-    var years = {"junior":"0","senior":"1","-":"2"};
-    var food = {"chicken":"0","pizza":"1","-":"2"}
-    var searchVal = {};
+    var table = [];
+    var lan = {"cpp":"0","java":"1","python":"2","-":"*"};
+    var work = {"backend":"0","frontend":"1","-":"*"};
+    var years = {"junior":"0","senior":"1","-":"*"};
+    var food = {"chicken":"0","pizza":"1","-":"*"}
     var answer = [];
+    //전처리
     for(let i=0;i<info.length;i++){
         var row = info[i].split(' ');
-        var rowForTable = [];
-        var lanE = lan[row[0]];
-        var workE = work[row[1]];
-        var yearE = years[row[2]];
-        var foodE = food[row[3]];
-        var score = row[4];
-        var code = lanE+workE+yearE+foodE;
-        !table[code] ? table[code] = score : table[code] = table[code]+"|"+score
-        // table[code] = score
+        //Array
+        table.push(row);
+        // OBJECT
+        // var index = row[0]+"|"+row[1]+"|"+row[2]+"|"+row[3];
+        // var score = row[4]
+        // if(table[index]){
+        //     table[index] += ","+score;
+        // }else{
+        //     table[index] = score
+        // }
     }
+    
+    //search
     for(let i=0;i<query.length;i++){
-        var search = query[i].split("and");
-        var tmp = search[3].split(" ");
-        var score = tmp[2];
-        var code = lan[search[0].trim()]+work[search[1].trim()]+years[search[2].trim()]+food[tmp[1]];
-        var success = [];
-        if(table[code]) success = table[code].split("|") ;
-        var count = 0;
-        for(let i of success){
-            if(i>=score) count++;
+        var search = query[i].split(" ").filter(function(o){
+            return o!=="and"
+        });
+        var overScore = [];
+        for(let j of table){
+            if(Number(j[4]) >= Number(search[4])){
+                if((search[0]==j[0]||search[0]=="-")&&
+                    (search[1]==j[1]||search[1]=="-")&&
+                    (search[2]==j[2]||search[2]=="-")&&
+                    (search[3]==j[3]||search[3]=="-")){
+                    overScore.push(j);
+                }
+            }
         }
-        console.log(code,score,success,count);
+        answer.push(overScore.length)
     }
-    console.log(table);
     return answer;
 }
 solution(["java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"], ["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]);

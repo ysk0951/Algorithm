@@ -1,6 +1,7 @@
 function solution(progresses, speeds) {
 /*
-*   Stack/Queue
+*   Stack - Last In, First Out
+*   Queue - First In, Fast Out
 *   #Idea
 *   Each Progress -> Queue
 *   Progress End -> Put in Stack

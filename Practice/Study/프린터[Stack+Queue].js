@@ -41,7 +41,7 @@ function solution(priorities, location) {
 }
 solution([2, 1, 3, 2], 2);
 
-/**
+/** 
  * 순서대로 -> Queue
  * 다시 뒤로 넣습니다 -> While
  * 문장 그대로 풀어보기 !! 

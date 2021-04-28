@@ -4,6 +4,7 @@ function solution(priorities, location) {
     let namedPriorities = [];
     let ret = [];
     let a = 0;
+    let answer = -1;
     for(let i=0;i<priorities.length;i++){
         let obj = {};
         obj[i] = priorities[i];
@@ -17,7 +18,6 @@ function solution(priorities, location) {
             for (let i = 1; i<namedPriorities.length; i++) {
                 if(!namedPriorities[i]) break;
                 let val = Number(Object.values(namedPriorities[i]).join(''));
-                console.log("now > ",now,"val > ",val)
                 if (val > now) check = false;
             }
         }
@@ -28,16 +28,16 @@ function solution(priorities, location) {
         }
         // 아닐경우 출력
         else {
-            namedPriorities.shift();
+            ret.push(namedPriorities.shift());
         }
-        console.log(check,namedPriorities);
-        a++;
-        if(a == 10) break;
-        // break;
+        if(namedPriorities.length<1) break;
     }
-
-
-    // console.log(namedPriorities);
+    for(let i=0;i<ret.length;i++){
+        if(Object.keys(ret[i])[0]===String(location)){
+            answer = i+1;
+        }
+    }
+    return answer
 }
 solution([2, 1, 3, 2], 2);
 

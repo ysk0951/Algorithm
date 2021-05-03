@@ -2,7 +2,9 @@
  * ### Index 로 인한 데이터 컨트롤을 하는 자료구조 ### 
  * ###################################################
  * 순서를 만들수있다.
+ * [Sorting/Searching] - rotate, divide(버리기), merge , Heap, ..etc
+ * Quick정렬 사용하기 : 시간복잡도 N으로 가장 빠름
  * 
- * rotate + pop + shift
+ * Array + Quick
  * 
  * */

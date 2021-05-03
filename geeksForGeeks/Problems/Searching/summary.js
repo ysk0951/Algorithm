@@ -1,6 +1,0 @@
-/**
- *  Search uses Array
- *  
- * 
- * 
- */

@@ -33,20 +33,16 @@
 
 // 2번풀이
 function solution(numbers, target) {
-    var arr = {};
+    var obj = {};
     for(let i=0;i<numbers.length;i++){
-        if(!arr.objAdd&&i==0){
-            var objAdd = {
-                dept0 : [numbers[i]]
-            }
-            var objSub = {
-                dept0 : [numbers[i]*(-1)]
-            }
-            arr["objAdd"] = objAdd;
-            arr["objSub"] = objSub;
+        if(!obj.dept0&&i==0){
+            obj['dept0'] = [ numbers[i],numbers[i]*(-1)]
         }else{
-            var dept = "dept" + (i)
-            var beforeDept = "dept" + (i-1)
+            var deptIdxBefore = "dept" + (i-1)
+            var beforeDept = obj[deptIdxBefore];
+            var detpIdxNow = "dept" + i
+            var nowDept = obj[deptIdxNow] = [];
+            
             for(let k=0;k<beforeDept.length;k++){
 
             }

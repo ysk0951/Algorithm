@@ -31,25 +31,30 @@
 //     return answer;
 // }
 
-// 2번풀이
+// 2번풀이 -- > BFS (이진 탐색트리 구현)
 function solution(numbers, target) {
+    var answer = 0;
     var obj = {};
     for(let i=0;i<numbers.length;i++){
         if(!obj.dept0&&i==0){
             obj['dept0'] = [ numbers[i],numbers[i]*(-1)]
         }else{
-            var deptIdxBefore = "dept" + (i-1)
+            var deptIdxBefore = "dept" + (i-1);
+            var detpIdxNow = "dept" + i;
             var beforeDept = obj[deptIdxBefore];
-            var detpIdxNow = "dept" + i
-            var nowDept = obj[deptIdxNow] = [];
-            
+            obj[detpIdxNow] = [];
             for(let k=0;k<beforeDept.length;k++){
-
+                obj[detpIdxNow].push(beforeDept[k] + numbers[i]);
+                obj[detpIdxNow].push(beforeDept[k] - numbers[i]);
             }
-            arr['objAdd'][dept] = 
         }
     }
-    console.log(arr);
+    var lastChildDept = Object.keys(obj)[Object.keys(obj).length-1];
+    var lastChild = obj[lastChildDept];
+    for(let i = 0;i<lastChild.length;i++){
+        if(lastChild[i] == target) answer ++;
+    }
+    return answer
 }
 
 solution([1,1,1,1,1],3);

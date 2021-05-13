@@ -3,11 +3,19 @@
 
 * Language : Javascript
 
-Reference
+* Reference
 - https://programmers.co.kr/learn/challenges 
 - https://www.geeksforgeeks.org/
 - https://www.hackerrank.com/
 
-record history
-![2021 4~5](https://user-images.githubusercontent.com/64457004/118136007-996d9600-b43e-11eb-803e-321f17e246bb.PNG)
+---
+
+<details>
+  
+  <summary>record history</summary>
+  
+  ![2021.04~05 challenge](https://user-images.githubusercontent.com/64457004/118136328-f701e280-b43e-11eb-97c8-276f97c54806.PNG)
+  
+</details>
+
 

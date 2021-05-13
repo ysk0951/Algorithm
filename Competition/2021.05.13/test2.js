@@ -1,11 +1,6 @@
 function solution(numbers) {
     var answer = [];
     for(let i=0;i<numbers.length;i++){
-        var ret;
-        var bit = numbers[i].toString(2);
-
-
-
         answer.push(eachFn(numbers[i]));
     }
     return answer;

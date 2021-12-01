@@ -1,7 +1,8 @@
 //REF :: https://programmers.co.kr/learn/courses/30/lessons/42862
-sol(5,[2,4],[1,3,5]);
-function sol(n,lost,reserve){
+
+function solution(n,lost,reserve){
     let student = [];
+    let cnt = 0;
     for(let i=1;i<=n;i++){
         let isExist = 1;
         if(lost.indexOf(i)>-1){isExist-=1;}
@@ -11,6 +12,20 @@ function sol(n,lost,reserve){
             isExist : isExist
         })
     }
-    console.log(student)
+    student.forEach(function(v,idx){
+      if(v.isExist == 0){
+        if(student[idx-1]&&student[idx-1].isExist>1){
+            student[idx-1].isExist -= 1;
+            v.isExist += 1;
+        }else if(student[idx+1]&&student[idx+1].isExist>1){
+            student[idx+1].isExist -= 1;
+            v.isExist += 1;
+        }
+      }
+    })
+    student.forEach(function(v,idx){
+        if(v.isExist > 0){cnt ++;}        
+    })
+    return cnt;
 }
 

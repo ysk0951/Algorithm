@@ -25,6 +25,7 @@ function solution(name) {
         })
     })
     //NAME ARR의 의 최단거리 -> DFS(재귀) 사용(이동의 가중치가 있음)
+    let addRowMove = 0;
     let nowIndex = 1;
     let pathStack = [NAMEArr[0]];
     function findeNear(arr){
@@ -59,7 +60,7 @@ function solution(name) {
                 }
             })
             let min = Math.min.apply(null,temp);
-            // answer += min;
+            addRowMove += min;
             let newWay = temp.findIndex(function(v){
                 return v == min;
             });
@@ -79,9 +80,12 @@ function solution(name) {
         if(indexOfAlpah >= 13){
             indexOfAlpah = Math.abs(indexOfAlpah-26);
         }
+        console.log(v.title,answer,indexOfAlpah,"::",addRowMove)
         answer += indexOfAlpah;
     })
+    console.log(answer);
     return answer;
 }
 
-solution("JAN");
+// solution("JAN");
+solution("JEROEN");

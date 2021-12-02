@@ -26,46 +26,62 @@ function solution(name) {
     })
     //NAME ARR의 의 최단거리 -> DFS(재귀) 사용(이동의 가중치가 있음)
     let nowIndex = 1;
-    let pathStack = [1];
+    let pathStack = [NAMEArr[0]];
     function findeNear(arr){
-        let idxs = arr.reduce(function(a,e){
-            arr = arr.filter(v=>{return v.visit ==0});
-            if(e.visit === 0 && e.title !== 'A'){
+        //방문해야하는 배열
+        arr = arr.filter(v=>{return v.visit ==0 && v.title !== 'A'});
+        if(arr.length > 0){
+            let middleValue = (arr.length) / 2
+            let idxs = arr.reduce(function(a,e){
                 a.push(e.idx);
-            }
-            return a;
-        },[]);
-        // idx.forEach(function(v){
-        //     (v - nowIndex) & arr.length
-        // })
-        console.log(arr);
-        console.log(idxs,arr.length) ;
-        // let forward = (nowIndex + 1) > arr.length ? (nowIndex +1)% arr.length: (nowIndex + 1) ;
-        // let backward = nowIndex - 1 < 1 ? nowIndex - 1 + arr.length : nowIndex - 1 ;
-        // if(arr[forward].title!=='A'&& visit === 0){
-        //     nowIndex = forward;
-        //     pathQuere.push(forward);
-        //     visit = 1;
-        // }else if(arr[backward].title!=='A'&& visit === 0){
-        //     nowIndex = backward;
-        //     pathQuere.push(backward);
-        //     visit = 1;
-        // }
-        // console.log(forward,backward);
+                return a;
+            },[]);
+            //now Index로 부터 거리
+            let temp = [];
+            let distance = [];
+            idxs.forEach(function(v){
+                //앞쪽거리
+                let forWard = v-nowIndex;
+                //뒤쪽거리
+                let backWard = nowIndex-v+idxs.length+1;
+                if(forWard <= backWard){
+                    distance.push({
+                        idx : v,
+                        distance : forWard
+                    });
+                    temp.push(forWard);
+                }else{
+                    distance.push({
+                        idx : v,
+                        distance : backWard
+                    });
+                    temp.push(backWard);
+                }
+            })
+            let min = Math.min.apply(null,temp);
+            // answer += min;
+            let newWay = temp.findIndex(function(v){
+                return v == min;
+            });
+            let nameIdx = NAMEArr.findIndex(function(v){
+                return v.idx ===  arr[newWay].idx;
+            })
+            pathStack.push(NAMEArr[nameIdx]);
+            NAMEArr[nameIdx].visit = 1;
+            nowIndex = NAMEArr[nameIdx].idx;
+            findeNear(NAMEArr);
+        }
     }
     findeNear(NAMEArr);
-    // console.log(NAMEArr);
-    NAMEArr.forEach(function(v){
+    pathStack.forEach(function(v){
         answer ++;
         let indexOfAlpah = ALPAHArr.findIndex(obj => obj.title == v.title);
-        if(indexOfAlpah > 13){
+        if(indexOfAlpah >= 13){
             indexOfAlpah = Math.abs(indexOfAlpah-26);
         }
         answer += indexOfAlpah;
     })
-    
     return answer;
-
 }
 
-solution("JEROEN");
+solution("JAN");

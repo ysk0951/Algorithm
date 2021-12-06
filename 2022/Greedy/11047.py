@@ -29,11 +29,13 @@ for i in value:
          isCountinue = True;
          K = num;
          answer+=1;
-         print(j,value[j],num%value[j]==0)
+         print("inner",isCountinue)
          break
+    print("Outer",isCountinue,answer)
+    break;
       
-    if isCountinue == False :
-      break
+    # if isCountinue == False :
+    #   break
     
   # while(true):
   #   num = K - i;
@@ -44,7 +46,16 @@ for i in value:
   # if(K%i == 0):
   #   answer += K/i;
     
-
-print(answer);
+#try2 : 가장 큰수를 빼고 아래차수중 어떠한 수로도 나눌수있으면 더빼본다는 Greedy
+N,K=map(int,input().split());a=[]
+for i in range(0,N):
+    a.append(int(input()))
+a.sort(reverse=True)
+count=0
+for i in a:
+    if K>=i:
+        count+=K//i
+        K-=i*(K//i)
+print(count,end='')
 
   

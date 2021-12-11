@@ -11,12 +11,23 @@
 money = int(input());
 answer = 0;
 
+money = 1000-int(input());
+answer = 0;
+
 def iter(a):
-    while(True):
-        money -= a;
-        answer+=1;
-        if(money < a):
-            break;
+  while(True):
+    global money
+    global answer
+    if(money < a or a <0):
+        break;
+    money -= a;
+    answer+=1;
     
 iter(500);
-print(answer)
+iter(100);
+iter(50);
+iter(10);
+iter(5);
+iter(1);
+
+print(answer);

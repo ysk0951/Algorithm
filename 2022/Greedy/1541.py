@@ -18,21 +18,19 @@ case2. + - 기준으로 정렬되어있을떄
 '''
 
 test = list(input());
-add = [];
+exp = [];
 sub = [];
 tmp = '';
 for i in range(len(test)):  
-  print(i,test[i]);
-  if(test[i]!='+' and test[i]!='-'):
-    tmp += test[i];
-    willBeAdd = True;
-  else:
-    if(test[i]=='+'):
-      pass;
-    if(test[i]=='-'):
-      pass;
-    tmp = '';
-  
+  if(test[i]!='-'):
+    print(tmp);
+    if(len(exp)==0):
+      tmp+=test[i];
+    else:
+      exp.append(tmp);
+      tmp = '';
+
+print(exp);
 
 # num =["-","+","(",")"];
 # number = '';

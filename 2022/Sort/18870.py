@@ -20,16 +20,17 @@ N = int(input());
 X = list(map(int,input().split(" ")))
 answer = [];
 
-for index in X:
+for index in range(len(X)):
+  print(index);
   tmp = 0;
-  startNum  = X.index(index)+1;
-  lastNum = X[len(X)-1]
-  # print(startNum,lastNum);
+  startNum  = index+1;
+  lastNum = len(X);
   for inner in range(startNum,lastNum):
-    print(inner);
     print(inner,X[inner]);
     if(X[index] > X[inner]):
-      tmp +=0;
+      tmp += 1;
   print(tmp);
   answer.append(tmp);
 print(answer);
+
+##시간초과

@@ -28,3 +28,6 @@ answer.sort();
 
 for i in answer:
   print(i);
+
+
+#정답률 43.3%

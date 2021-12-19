@@ -20,9 +20,14 @@ group = [];
 for i in range(NK[1]):
   group.append(0);
 
-print(group)
+
 for i in range(ln):
   if(i > midLn):
     break;
   else:
-    pass;
+    key = i%NK[1];
+    group[key] += passA[i];
+print(passA);
+print(min(group));
+
+##그룹마다 합의 최소를 미리 정하고 그에 끼워맞출 수 있는지 생각해보세요

@@ -23,7 +23,16 @@
 # B[1] =  ?
 
 #P수열에 대한 내용을 하나씩 다 적어보기
+'''
+P[0] = []
+p[1] = [0]
+p[2] = [0,1] 
+p[3] = [0,1,2]
+'''
+
 N = int(input());
 element = list(map(int,input().split(" ")));
 
 print(N,element);
+
+#문제 이해가 안감 - 오답(47%)

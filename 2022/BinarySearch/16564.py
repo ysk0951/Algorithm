@@ -8,16 +8,18 @@
 
 #Code
 NK = list(map(int,input().split(" ")));
+levels = NK[0];
+addNum = NK[1];
+
 level = [];
-for i in range(NK[0]):
+for i in range(levels):
   level.append(int(input()));
 
-midValue = sum(level)/len(level);
-need = 0;
-needCount = 0;
-for i in level:
-  if i < midValue:
-    needCount += 1;
-    need += (midValue - i);
-print(sum(level),len(level),midValue)
-print(need);
+for i in range(addNum):
+  idxMin = level.index(min(level));
+  level[idxMin] += 1;
+
+print(min(level))
+
+#시간초과
+#46%

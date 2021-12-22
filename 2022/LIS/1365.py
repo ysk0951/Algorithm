@@ -10,11 +10,25 @@
   # 크루스칼
 
 #Code
+from bisect import bisect_left;
+N = int(input());
+arr = list(map(int,input().split(" ")))
+dp = [];
 
+for i in arr:
+  position = bisect_left(dp,i);
+  if(len(dp) <= position) :
+    dp.append(i);
+  else :
+    dp[position] = i;
+
+print(len(arr)-len(dp));
+
+##56%
 #Case
 '''
-A
-B
+4
+2 3 4 1
 >>>
-C
+1
 '''

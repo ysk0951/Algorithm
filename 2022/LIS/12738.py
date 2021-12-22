@@ -13,19 +13,19 @@
 
 #Code
 #1.MyCode  LIS 완전탐색 - 시간초과 O(n^2)
-N = int(input());
-A = list(map(int,input().split(" ")));
-memo = [0 for i in range(N)];
+# N = int(input());
+# A = list(map(int,input().split(" ")));
+# memo = [0 for i in range(N)];
 
-for i in range(N):
-  init = 0;
-  for j in range(i):
-    if(A[i]>A[j]):
-      if(init < memo[j]):
-          init = memo[j];
-  memo[i] = init + 1;
+# for i in range(N):
+#   init = 0;
+#   for j in range(i):
+#     if(A[i]>A[j]):
+#       if(init < memo[j]):
+#           init = memo[j];
+#   memo[i] = init + 1;
 
-print(max(memo));
+# print(max(memo));
 
 #2. Lis Bisect O(nlogn)
 from bisect import bisect_left 

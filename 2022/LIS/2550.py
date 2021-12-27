@@ -10,14 +10,33 @@
   # 크루스칼
 
 #Code
+from bisect import bisect_left;
 N = int(input());
 swichNum = list(map(int,input().split(" ")));
 bulbNum = list(map(int,input().split(" ")));
+idxForLIS = [];
 forSort = [];
+dp = [];
 for i in range(N):
-  forSort.append((swichNum[i],bulbNum[i]));
-forSort.sort(key=lambda x : (x[0]));
-print(forSort);
+  idx = swichNum.index(bulbNum[i]);
+  idxForLIS.append(idx);
+# forSort.sort(key=lambda x : (x[0]));
+for i in idxForLIS:
+  p = bisect_left(dp,i);
+  if(len(dp)<=p):
+    dp.append(i);
+  elif(len(dp)-1==p):
+    dp[p] = i;
+
+answer = []; 
+for i in dp:
+  answer.append(swichNum[i]);
+answer.sort()
+answer = list(map(str,answer))
+answerText = ' '.join(answer);
+print(len(dp))
+print(answerText)
+
 #Case
 '''
 5
@@ -27,3 +46,6 @@ print(forSort);
 3
 3 4 5
 '''
+
+#실패(47%)
+# 반례를 못찾겠음

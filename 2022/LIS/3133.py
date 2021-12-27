@@ -10,13 +10,30 @@
   # 크루스칼
 
 #Idea
-#len(LIS) 와 그 LIS를 역추적한것의 경우의수
+#len(LIS) 와 그 LIS를 역추적한것의 경우의수 + 시작점
 #Code
+N = int(input());
+XY = [];
+for i in range(N):
+  XY.append(tuple(map(int,input().split(" "))))
 
+XY.sort(key=lambda x:(x[0],x[1]));
+print(XY);
 #Case
 '''
-A
-B
+11
+8 6
+7 4
+5 4
+5 1
+5 6
+6 2
+3 2
+4 3
+4 5
+3 5
+2 4
 >>>
-C
+4
+3
 '''

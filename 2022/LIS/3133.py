@@ -18,7 +18,11 @@ for i in range(N):
   XY.append(tuple(map(int,input().split(" "))))
 
 XY.sort(key=lambda x:(x[0],x[1]));
+sumForXY = [];
+for i in XY :
+  sumForXY.append(i[0]+i[1]);
 print(XY);
+print(sumForXY)
 #Case
 '''
 11

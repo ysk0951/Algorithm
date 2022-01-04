@@ -10,8 +10,6 @@
   # 크루스칼
 
 #Code
-N,C = list(map(int,input().split(" ")));
-X = [int(input()) for i in range(N)];
 
 #Case
 '''

@@ -59,9 +59,9 @@ if __name__ == "__main__":
             if board[i][j] != 0: # 일반 확인
                 cnt += 1
                 bfs(board,i,j,board[i][j])
-            if board_rg[i][j] != 0: # 적록색약 확인
-                cnt_rg += 1
-                bfs(board_rg,i,j,board_rg[i][j])
+            # if board_rg[i][j] != 0: # 적록색약 확인
+            #     cnt_rg += 1
+            #     bfs(board_rg,i,j,board_rg[i][j])
     print(cnt,cnt_rg)
 
 #Case

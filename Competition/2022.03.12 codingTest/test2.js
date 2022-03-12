@@ -9,13 +9,13 @@ function solution(n, clockwise) {
     answer.push(inner);
   }
   //정방향
-  var dept = 0;
+  var dept = 1;
   var maxNum =  n-(2*dept)-1
   var lastMaxNum = n -(2*(dept-1))-1
   var num = dept==0 ? 1 : n-(2*dept) ;  
   var initVal = num;
 
-  console.log(num,initVal,maxNum)
+  console.log(lastMaxNum,num,maxNum)
   function doClock(){
     for(var i =0 ;i<n-1 ;i++){
       if(answer[dept][i] ==0 && num <= maxNum){
